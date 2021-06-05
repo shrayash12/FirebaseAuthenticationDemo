@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "212967642830",
+    "project_id": "auth-6c782",
+    "storage_bucket": "auth-6c782.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212967642830:android:04a949a11155496108e29f",
+        "android_client_info": {
+          "package_name": "shradha.com.firebaseauthenticationdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212967642830-q5h9fa6d4d5lu99g3m4qhg3bgh0uaqjr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkFGjh_S_UsDhN14I8BKYFZ7KsS4EEKTY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212967642830-q5h9fa6d4d5lu99g3m4qhg3bgh0uaqjr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212967642830:android:7b5e2c8c80b9241c08e29f",
+        "android_client_info": {
+          "package_name": "shradha.com.jsonparsermanually"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212967642830-q5h9fa6d4d5lu99g3m4qhg3bgh0uaqjr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkFGjh_S_UsDhN14I8BKYFZ7KsS4EEKTY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212967642830-q5h9fa6d4d5lu99g3m4qhg3bgh0uaqjr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

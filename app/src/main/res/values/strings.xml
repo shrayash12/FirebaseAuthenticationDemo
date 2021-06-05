@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FirebaseAuthenticationDemo</string>
+    <string name="welcome">Welcome,</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_password">Enter password</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="enter_email">Enter email</string>
+    <string name="reset_password">ResetPassword</string>
+    <string name="log_out">Log Out</string>
+</resources>
