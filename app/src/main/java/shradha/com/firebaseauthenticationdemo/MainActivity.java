@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     Button btn_LogIn;
     TextView log_Tv_ForgotPassword;
     TextView log_Btn_Register;
-    Button btn_LogOut;
     FirebaseAuth mAuth;
 
 
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         btn_LogIn = findViewById(R.id.btn_LogIn);
         log_Tv_ForgotPassword = findViewById(R.id.log_Tv_ForgotPassword);
         log_Btn_Register = findViewById(R.id.log_Btn_Register);
-        btn_LogOut = findViewById(R.id.btn_LogOut);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -65,12 +63,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ForgetPasswordActivity.class));
-            }
-        });
-        btn_LogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
             }
         });
     }
@@ -117,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivity.this, "Log in failed You are not a registered user please Register first", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
     }

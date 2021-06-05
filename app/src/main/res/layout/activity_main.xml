@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background">
 
 
@@ -11,6 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
+        app:cardCornerRadius="40dp"
+        android:padding="10dp"
         android:background="@color/white">
 
         <LinearLayout
@@ -35,6 +38,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/welcome"
+                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -44,6 +48,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/welcome"
                         android:text="@string/sign_in_to_continue"
+                        android:textColor="@color/black"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
@@ -53,7 +58,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:text="@string/sign_up"
-                    android:textColor="@color/text_color"
+                    android:textStyle="bold"
+                    android:textColor="@color/background"
                     android:textSize="18sp" />
 
 
@@ -118,16 +124,5 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_LogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="5dp"
-        android:padding="10dp"
-        android:layout_gravity="right"
-        android:background="@color/white"
-        android:text="@string/log_out"
-        android:textColor="@color/button_background" />
 
 </FrameLayout>
