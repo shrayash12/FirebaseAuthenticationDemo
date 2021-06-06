@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/background"
-    android:orientation="vertical"
-    android:layout_gravity="center">
-
+    android:layout_gravity="center"
+    android:background="@color/primary"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/carview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_centerInParent="true"
         android:layout_margin="10dp"
-        app:cardCornerRadius="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
         android:padding="10dp"
-        android:background="@color/white">
+        app:cardCornerRadius="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_gravity="center"
+            android:orientation="vertical"
             android:padding="30dp">
 
             <TextView
@@ -35,19 +34,12 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-
-
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/textInputLayout.GrayLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:padding="10dp">
-
-
-
-
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/reg_Email"
@@ -78,30 +70,26 @@
                     android:textColorHint="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_SignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/button_background"
+                android:background="@color/primary"
                 android:text="SIGN UP"
                 android:textColor="@color/white" />
-
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/already_account"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/carview"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/carview"
-        android:textColor="@color/white"
         android:text="You have account? Sign In"
-        android:layout_height="wrap_content"/>
-
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 </RelativeLayout>

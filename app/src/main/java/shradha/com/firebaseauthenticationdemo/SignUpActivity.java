@@ -1,125 +1,80 @@
 package shradha.com.firebaseauthenticationdemo;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText reg_Email;
-    EditText reg_Password;
-    Button btn_SignUp;
-    TextView already_account;
-
-    private FirebaseAuth mAuth;
+    private EditText editEmail;
+    private EditText editPassword;
+    private Button buttonSignUp;
+    private TextView tvAlreadyAccount;
+    static final int MINIMUM_PASSWORD_LENGTH = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
-        User user;
-        btn_SignUp = findViewById(R.id.btn_SignUp);
-        already_account = findViewById(R.id.already_account);
-
-        btn_SignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                userRegistration();
-            }
-
-        });
-        already_account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SignUpActivity.this, MainActivity.class));
-            }
-        });
+        findViews();
+        buttonSignUp.setOnClickListener(v -> userRegistration());
+        tvAlreadyAccount.setOnClickListener(v -> startActivity(new Intent(SignUpActivity.this, SignInActivity.class)));
+        Objects.requireNonNull(getSupportActionBar()).setTitle("SignUp Screen");
     }
+
+    private void findViews() {
+        buttonSignUp = findViewById(R.id.btn_SignUp);
+        tvAlreadyAccount = findViewById(R.id.already_account);
+        editEmail = findViewById(R.id.reg_Email);
+        editPassword = findViewById(R.id.reg_Password);
+    }
+
     private void userRegistration() {
-        mAuth = FirebaseAuth.getInstance();
-        reg_Email = findViewById(R.id.reg_Email);
-        reg_Password = findViewById(R.id.reg_Password);
-        String userEmail = reg_Email.getText().toString();
-        String userPassword = reg_Password.getText().toString();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String userEmail = editEmail.getText().toString();
+        String userPassword = editPassword.getText().toString();
 
         if (userEmail.isEmpty()) {
-            reg_Email.setError("Email is require");
-            reg_Email.requestFocus();
+            editEmail.setError(getString(R.string.email_is_require));
+            editEmail.requestFocus();
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
-            reg_Email.setError("Please provide valid Email");
-            reg_Email.requestFocus();
+            editEmail.setError(getString(R.string.please_enter_valid_email));
+            editEmail.requestFocus();
             return;
         }
 
         if (userPassword.isEmpty()) {
-            reg_Password.setError("Password is require");
-            reg_Password.requestFocus();
+            editPassword.setError(getString(R.string.password_is_required));
+            editPassword.requestFocus();
             return;
         }
-        if (userPassword.length() < 6) {
-            reg_Password.setError("Minimum password length should be 6 characters");
-            reg_Password.requestFocus();
+        if (userPassword.length() < MINIMUM_PASSWORD_LENGTH) {
+            editPassword.setError(getString(R.string.minimum_password_length));
+            editPassword.requestFocus();
             return;
         }
-        // Log.d(SignUpActivity.class.getSimpleName(), "SignUp Button Clicked");
-        mAuth.createUserWithEmailAndPassword(reg_Email.getText().toString(),
-                reg_Password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    User user = new User(userEmail);
-                    FirebaseDatabase.getInstance().getReference("User")
-                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(SignUpActivity.this, "USER HAS BEEN SUCCESSFULLY REGISTERED", Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(SignUpActivity.this, "Failed to register! Please try again ", Toast.LENGTH_LONG).show();
-
-                            }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-
-                            Toast.makeText(SignUpActivity.this, "Failed to register", Toast.LENGTH_LONG).show();
-
-                        }
-                    });
-                    ;
-
-                } else {
-                    Toast.makeText(SignUpActivity.this, "Failed to register", Toast.LENGTH_LONG).show();
-                }
+        auth.createUserWithEmailAndPassword(editEmail.getText().toString(),
+                editPassword.getText().toString()).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                startActivity(new Intent(SignUpActivity.this, SignInActivity.class));
+                Toast.makeText(SignUpActivity.this, getString(R.string.user_sign_up_success), Toast.LENGTH_LONG).show();
+                finish();
+            } else {
+                Toast.makeText(SignUpActivity.this, getString(R.string.try_again), Toast.LENGTH_LONG).show();
             }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-                Toast.makeText(SignUpActivity.this, "Failed to register", Toast.LENGTH_LONG).show();
-
-            }
-        });
+        }).addOnFailureListener(e -> Toast.makeText(SignUpActivity.this, e.getLocalizedMessage(), Toast.LENGTH_LONG).show());
     }
 
 }
