@@ -9,4 +9,17 @@
     <string name="enter_email">Enter email</string>
     <string name="reset_password">ResetPassword</string>
     <string name="log_out">Log Out</string>
+    <string name="email_required">Email is require</string>
+    <string name="please_enter_valid_email">Please enter valid email</string>
+    <string name="password_is_required">Password is require</string>
+    <string name="minimum_password_length">Minimum password length should be 6 characters</string>
+    <string name="log_in_success">Log in successful</string>
+    <string name="please_check_email">Please check your email to verify account</string>
+    <string name="log_in_failed">Log in failed you are not a registered user please register first</string>
+    <string name="forget_password_screen">Forget Password Screen</string>
+    <string name="email_is_require">Email is require</string>
+    <string name="please_provide_email">Please provide valid email</string>
+    <string name="check_your_email_reset">Check your email to reset the password</string>
+    <string name="try_again">Try again! something went wrong</string>
+    <string name="user_sign_up_success">User registered successfully</string>
 </resources>
